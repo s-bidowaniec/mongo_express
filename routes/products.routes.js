@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {ObjectId} = require("mongodb");
 const Product = require('../models/product.model');
-const Department = require("../models/department.model");
 
 router.get('/products', async (req, res) => {
   try {
