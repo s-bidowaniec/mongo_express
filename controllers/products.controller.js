@@ -13,7 +13,7 @@ exports.getRandom = async (req, res) => {
     try {
         const count = await Product.countDocuments();
         const rand = Math.floor(Math.random() * count);
-        const prod = Product.findOne().skip(rand);
+        const prod = await Product.findOne().skip(rand);
         if (!prod) res.status(404).json({message: 'Not found'});
         else res.json(prod);
     } catch (err) {

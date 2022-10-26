@@ -13,7 +13,7 @@ exports.getRandom = async (req, res) => {
     try {
         const count = await Department.countDocuments();
         const rand = Math.floor(Math.random() * count);
-        const dep = Department.findOne().skip(rand);
+        const dep = await Department.findOne().skip(rand);
         if (!dep) res.status(404).json({message: 'Not found'});
         else res.json(dep);
     } catch (err) {
