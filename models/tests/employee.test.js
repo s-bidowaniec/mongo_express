@@ -59,7 +59,4 @@ describe('Employee', () => {
             expect(err).to.be.null;
         });
     });
-    after(() => {
-        mongoose.models = {};
-    });
 });
