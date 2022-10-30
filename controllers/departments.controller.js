@@ -24,7 +24,7 @@ exports.getRandom = async (req, res) => {
 exports.getById = async (req, res) => {
     try {
         const dep = await Department.findById(req.params.id);
-        if(!dep) res.status(404).json({ message: 'Not found' });
+        if(!dep) res.status(404).json({ message: 'Not found...' });
         else res.json(dep);
     } catch (err) {
         res.status(500).json({message: err});
@@ -37,7 +37,7 @@ exports.createDepartment = async (req, res) => {
         const { name } = req.body;
         const newDepartment = new Department({name})
         await newDepartment.save()
-        res.json(newDepartment)
+        res.json({message: 'OK'})
     } catch (err) {
         res.status(500).json({message: err})
     }
@@ -50,7 +50,7 @@ exports.updateDepartment = async (req, res) => {
         if (dep) {
             dep.name = name;
             await dep.save()
-            res.json(dep);
+            res.json({message: 'OK'});
         } else {
             res.status(404).json({message: 'Not found...'})
         }
@@ -66,7 +66,7 @@ exports.deleteDepartment = async (req, res) => {
         const dep = await Department.findById(req.params.id);
         if(dep){
             await dep.remove();
-            res.json(dep);
+            res.json({message: 'OK'});
         }
         else res.status(404).json({message: 'Not found...'})
     } catch(err) {
