@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "NODE_ENV=test mocha \"./{,!(node_modules|client)/**/}*.test.js\"",
+    "test": "cross-env NODE_ENV=test mocha \"./{,!(node_modules|client)/**/}*.test.js\"",
     "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
   "dependencies": {
@@ -18,5 +18,8 @@
     "mongoose": "5.7.1",
     "nodemon": "^2.0.19",
     "onchange": "6.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
